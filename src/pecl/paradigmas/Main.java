@@ -9,13 +9,15 @@ package pecl.paradigmas;
  *
  * @author Azahara
  */
-public class PECLParadigmas {
+public class Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Mostrador most = new Mostrador(10);
+        Empleados E1 = new Empleados("Empleado1", most);
+        Empleados E2 = new Empleados("Empleado2", most);
     }
     
 }

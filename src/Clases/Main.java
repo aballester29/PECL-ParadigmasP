@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
-/**
- *
- * @author Azahara
- */
 public class Main {
 
     /**
@@ -18,6 +9,19 @@ public class Main {
         Mostrador most = new Mostrador(10);
         Empleados E1 = new Empleados("Empleado1", most);
         Empleados E2 = new Empleados("Empleado2", most);
+        
+        for(int i=1; i<=200;i++){
+            Clientes Ci= new Clientes("C"+i,  most);
+            Ci.start();
+        }
+        
+        E1.start();
+        E2.start();
+        
+        
+        
+        
+        
     }
     
 }

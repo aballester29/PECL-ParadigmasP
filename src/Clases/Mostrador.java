@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import java.util.ArrayList;
@@ -11,50 +6,50 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- *
- * @author Azahara
- */
 public class Mostrador {
-    private List<String> most;
+    // ATRIBUTOS DE LA CLASE Mostrador
+    private final List<String> most;
     private int cont=0, max;
-    private Lock control = new ReentrantLock();
-    private Condition llena = control.newCondition();
-    private Condition vacia = control.newCondition();
+    private final Lock control = new ReentrantLock();
+    private final Condition llena = control.newCondition();
+    private final Condition vacia = control.newCondition();
     
-        
-    public Mostrador(int max){
+    // CONSTRUCTOR DEL MOSTRADOR    
+    public Mostrador(int maxi){
+        this.max=maxi;
         most = new ArrayList<String>(max);
-        this.max = max;
+        
+    }
+        
+    // FUNCIÓN PARA AÑADIR PEDIDOS A LA LISTA (MOST). USADA POR CLIENTES.
+    public void añadirPedido(String pedido) throws InterruptedException{
+        control.lock();             // Ponemos el cerrojo        
+        while (cont == max){        // Controlamos si la lista está llena.
+            llena.await();
+        }        
+        try{
+            most.add(pedido);       // Añadimos el pedido
+            cont ++;                // Sumamos 1 al contador
+            vacia.signal();         
+        } finally{
+            control.unlock();       // Quitamos el cerrojo
+        }     
     }
     
-    public void añadirPedido(String pedido) throws InterruptedException{
-        control.lock();
-        
-        while (cont == max){
+    // FUNCIÓN PARA RECOGER PEDIDOS DE LA LISTA (MOST). USADA POR EMPLEADOS
+    public String recogerPedido() throws InterruptedException{
+        control.lock();             // Ponemos el cerrojo
+        while (cont == 0){          // Controlamos si la lista está vacia.
             vacia.await();
         }
-        
         try{
-            most.add(pedido);
-            cont ++;
+            String pedido = most.get(0);    // Obtenemos el pedido de la lista
+            most.remove(0);                 // Eliminamos el pedido de la lista
+            cont --;                        // Disminuimos el contador
+            llena.signal();
+            return pedido;
         } finally{
-            control.unlock();
-        }
-        
-        
-    }
-    
-    public String recogerPedido(){
-        control.lock();
-        
-        while (cont == 0){
-            
-        }
-        
-        String pedido = most.get(0);
-        most.remove(0);
-          
-        return pedido;
+            control.unlock();       // Quitamos el cerrojo
+        }          
     }
 }

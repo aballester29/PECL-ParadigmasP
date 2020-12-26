@@ -20,7 +20,7 @@ public class Empleados extends Thread{      //Empleado es un hilo (Thread)
                 sleep((int)(300+400*Math.random()));      //CAMBIAR SLEEP PARA QUE SEA ENTRE 300 Y 700 MS
                 //Cogemos el pedido del mostrador
                 String pedido=most.recogerPedido();
-                System.out.println("Pedido recogido: "+ pedido);
+                System.out.println(id + " recoge: "+ pedido);
 
                 //LLevar pedido a la mesa de la cocina
                 //mesa.añadirPedido();

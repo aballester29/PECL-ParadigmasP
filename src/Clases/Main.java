@@ -1,5 +1,8 @@
 package Clases;
 
+import java.util.Date;
+
+
 public class Main {
 
     /**
@@ -17,11 +20,7 @@ public class Main {
         
         E1.start();
         E2.start();
-        
-        
-        
-        
-        
+       
     }
     
 }

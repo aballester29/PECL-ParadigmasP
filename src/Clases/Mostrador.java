@@ -17,9 +17,9 @@ public class Mostrador {
     private final Lock control = new ReentrantLock();
     private final Condition llena = control.newCondition();
     private final Condition vacia = control.newCondition();
-    JList text;
+    JTextArea text;
     // CONSTRUCTOR DEL MOSTRADOR    
-    public Mostrador(int maxi, JList t){
+    public Mostrador(int maxi, JTextArea t){
         this.max=maxi;
         this.text=t;
         most = new ArrayList<String>(max);
@@ -35,7 +35,11 @@ public class Mostrador {
         try{
             most.add(pedido);       // Añadimos el pedido
             cont ++;                // Sumamos 1 al contador
-            text.addElement(pedido);
+            
+            text.setText(null);
+            for(String a : most){
+                text.append(a + "\n");
+            }
             //setMost();
             vacia.signal();         
         } finally{
@@ -53,6 +57,10 @@ public class Mostrador {
             String pedido = most.get(0);    // Obtenemos el pedido de la lista
             most.remove(0);                 // Eliminamos el pedido de la lista
             cont --;                        // Disminuimos el contador
+            text.setText(null);
+            for(String a : most){
+                text.append(a + "\n");
+            }
             //setMost();
             llena.signal();
             return pedido;

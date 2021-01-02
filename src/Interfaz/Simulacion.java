@@ -23,6 +23,9 @@ public final class Simulacion extends javax.swing.JFrame {
   
     private Paso paso = new Paso();
     private boolean botonPulsado = false;
+    private boolean botonE1 = false;
+    private boolean botonE2 = false;
+    
     /**
      * Creates new form Simulación
      */
@@ -64,8 +67,6 @@ public final class Simulacion extends javax.swing.JFrame {
         textFieldE1 = new javax.swing.JTextPane();
         jScrollPane6 = new javax.swing.JScrollPane();
         textMost = new javax.swing.JTextArea();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,8 +112,18 @@ public final class Simulacion extends javax.swing.JFrame {
         });
 
         jButton2.setText("Pausar Empleado 1");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Pausar Empleado 2");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jScrollPane3.setViewportView(textFieldE2);
 
@@ -121,13 +132,6 @@ public final class Simulacion extends javax.swing.JFrame {
         textMost.setColumns(20);
         textMost.setRows(5);
         jScrollPane6.setViewportView(textMost);
-
-        textList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(textList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,26 +149,20 @@ public final class Simulacion extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jScrollPane4)
                     .addComponent(jScrollPane6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                                .addComponent(jLabel7))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(76, 76, 76))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(132, Short.MAX_VALUE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField3)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(76, 76, 76))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,16 +201,11 @@ public final class Simulacion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton2)
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jButton2)
+                .addGap(28, 28, 28)
+                .addComponent(jButton3)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,6 +238,38 @@ public final class Simulacion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(!botonE1) //Si no se ha pulsado
+        {                
+            botonE1=true;             //lo cambiamos a pulsado
+            jButton2.setText("Reanudar Empleado 1");  //y cambiamos el texto
+            paso.cerrarE("Empleado1");    //Cerramos el paso para que los pintores se detengan
+        }
+        else //Si ya se había pulsado
+        {                          
+            botonE1=false;            //lo cambiamos
+            jButton2.setText("Pausar Empleado 1");  //y cambiamos el texto
+            paso.abrirE("Empleado1");    //Abrimos el paso para que los pintores sigan trabajando
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if(!botonE2) //Si no se ha pulsado
+        {                
+            botonE2=true;             //lo cambiamos a pulsado
+            jButton3.setText("Reanudar Empleado 2");  //y cambiamos el texto
+            paso.cerrarE("Empleado2");    //Cerramos el paso para que los pintores se detengan
+        }
+        else //Si ya se había pulsado
+        {                          
+            botonE2=false;            //lo cambiamos
+            jButton3.setText("Pausar Empleado 2");  //y cambiamos el texto
+            paso.abrirE("Empleado2");    //Abrimos el paso para que los pintores sigan trabajando
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -256,7 +281,6 @@ public final class Simulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -267,7 +291,6 @@ public final class Simulacion extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane2;
     public javax.swing.JTextPane textFieldE1;
     public javax.swing.JTextPane textFieldE2;
-    public javax.swing.JList<String> textList;
     public javax.swing.JTextArea textMost;
     // End of variables declaration//GEN-END:variables
 }

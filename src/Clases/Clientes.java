@@ -19,10 +19,9 @@ public class Clientes extends Thread{ //Cada cliente es un hilo (thread)
             try {                
                 //Creamos un pedido
                 String pedido=(id+"-P"+i);                
-                paso.mirar();
                 //LLevar pedido a la mesa de la cocina
                 most.añadirPedido(pedido);
-                System.out.println(id+" deja: "+ pedido);
+                //System.out.println(id+" deja: "+ pedido);
                 sleep((int)(500+500*Math.random()));
             } catch (InterruptedException e) {}            
         }

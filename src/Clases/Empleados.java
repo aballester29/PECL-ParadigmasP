@@ -24,7 +24,7 @@ public class Empleados extends Thread{      //Empleado es un hilo (Thread)
         while (true){ //Bucle infinito            
             try {
                 sleep((int)(300+400*Math.random()));      //CAMBIAR SLEEP PARA QUE SEA ENTRE 300 Y 700 MS
-                paso.mirar();
+                paso.mirar(id);
                 //Cogemos el pedido del mostrador
                 String pedido=most.recogerPedido();
                 mensaje=id + " recoge: "+ pedido;
@@ -35,10 +35,5 @@ public class Empleados extends Thread{      //Empleado es un hilo (Thread)
             } catch (InterruptedException e) {}            
         }
     }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-    
     
 }

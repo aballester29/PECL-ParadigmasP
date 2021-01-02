@@ -2,13 +2,15 @@ package Clases;
 
 public class Clientes extends Thread{ //Cada cliente es un hilo (thread)
     // ATRIBUTOS DE LA CLASE Clientes
-    private String id;              //Identificador del cliente 
+    private String id;              //Identificador del cliente
+    private Paso paso;
     Mostrador most;                 //Mostrador donde se dejarán los pedidos para los empleados
     
     
     // CONSTRUCTOR Clientes
-    public Clientes(String id, Mostrador most) { //Añadir atributo mesa
+    public Clientes(String id, Mostrador most, Paso paso) { //Añadir atributo mesa
         this.id = id;
+        this.paso=paso;
         this.most = most;
     }
     
@@ -17,7 +19,7 @@ public class Clientes extends Thread{ //Cada cliente es un hilo (thread)
             try {                
                 //Creamos un pedido
                 String pedido=(id+"-P"+i);                
-
+                paso.mirar();
                 //LLevar pedido a la mesa de la cocina
                 most.añadirPedido(pedido);
                 System.out.println(id+" deja: "+ pedido);

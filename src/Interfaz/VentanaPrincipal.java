@@ -72,12 +72,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private JFrame getFrame(){
-        return this;
-    }
+
     private void BotonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonStartActionPerformed
         // TODO add your handling code here:
-        Simulacion s = new Simulacion(this);
+        dispose();
+        Simulacion s = new Simulacion();
+        s.setVisible(true);
     }//GEN-LAST:event_BotonStartActionPerformed
 
     /**

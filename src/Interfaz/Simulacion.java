@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
  */
 public final class Simulacion extends javax.swing.JFrame {
   
+    // ATRIBUTOS USADOS EN LA SIMULACIÓN
     private Paso paso = new Paso();
     private boolean botonPulsado = false;
     private boolean botonE1 = false;
@@ -31,9 +32,10 @@ public final class Simulacion extends javax.swing.JFrame {
      */
     public Simulacion() {
         initComponents();
-        this.getContentPane().setBackground(Color.white);
-        
+        this.getContentPane().setBackground(Color.white);        
         this.setVisible(true);
+        
+        // Iniciamos la clase funciones que hace que la simulación comience
         Funciones f = new Funciones(paso, this);
     }
 
@@ -141,14 +143,15 @@ public final class Simulacion extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton3)
-                    .addComponent(jButton2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane3)
-                    .addComponent(jButton1)
                     .addComponent(jScrollPane4)
-                    .addComponent(jScrollPane6))
+                    .addComponent(jScrollPane6)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -228,13 +231,13 @@ public final class Simulacion extends javax.swing.JFrame {
         {                
             botonPulsado=true;             //lo cambiamos a pulsado
             jButton1.setText("Reanudar simulación");  //y cambiamos el texto
-            paso.cerrar();    //Cerramos el paso para que los pintores se detengan
+            paso.cerrar();    //Cerramos el paso para que la simulación se detenga
         }
         else //Si ya se había pulsado
         {                          
             botonPulsado=false;            //lo cambiamos
             jButton1.setText("Pausar simulación");  //y cambiamos el texto
-            paso.abrir();    //Abrimos el paso para que los pintores sigan trabajando
+            paso.abrir();    //Abrimos el paso para que la simulación siga ejecutandose
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -244,13 +247,13 @@ public final class Simulacion extends javax.swing.JFrame {
         {                
             botonE1=true;             //lo cambiamos a pulsado
             jButton2.setText("Reanudar Empleado 1");  //y cambiamos el texto
-            paso.cerrarE("Empleado1");    //Cerramos el paso para que los pintores se detengan
+            paso.cerrarE("Empleado1");    //Cerramos el paso para que el empleado 1 se detenga
         }
         else //Si ya se había pulsado
         {                          
             botonE1=false;            //lo cambiamos
             jButton2.setText("Pausar Empleado 1");  //y cambiamos el texto
-            paso.abrirE("Empleado1");    //Abrimos el paso para que los pintores sigan trabajando
+            paso.abrirE("Empleado1");    //Abrimos el paso para que el empleado 1 siga trabajando
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -260,13 +263,13 @@ public final class Simulacion extends javax.swing.JFrame {
         {                
             botonE2=true;             //lo cambiamos a pulsado
             jButton3.setText("Reanudar Empleado 2");  //y cambiamos el texto
-            paso.cerrarE("Empleado2");    //Cerramos el paso para que los pintores se detengan
+            paso.cerrarE("Empleado2");    //Cerramos el paso para que el empleado 2 se detenga
         }
         else //Si ya se había pulsado
         {                          
             botonE2=false;            //lo cambiamos
             jButton3.setText("Pausar Empleado 2");  //y cambiamos el texto
-            paso.abrirE("Empleado2");    //Abrimos el paso para que los pintores sigan trabajando
+            paso.abrirE("Empleado2");    //Abrimos el paso para que el empleado 2 siga trabajando
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

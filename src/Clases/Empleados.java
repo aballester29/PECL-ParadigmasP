@@ -5,8 +5,8 @@ import javax.swing.JTextPane;
 
 public class Empleados extends Thread{      //Empleado es un hilo (Thread)
     // ATRIBUTOS DE LA CLASE EMPLEADO
-    public String id, mensaje;              //Identificador del empleado
-    JTextPane msg;
+    public String id, mensaje;              //Identificador del empleado y mensaje a mostrar en la interfaz
+    JTextPane msg;      // Para mostrar el mensaje en la interfaz
     Paso paso;
     Mostrador most;                 //Mostrador donde se encuentran los pedidos de los clientes
     //Mesa mesa;                    //Mesa de la cocina donde se pondrán los pedidos para los cocineros
@@ -28,10 +28,11 @@ public class Empleados extends Thread{      //Empleado es un hilo (Thread)
                 //Cogemos el pedido del mostrador
                 String pedido=most.recogerPedido();
                 mensaje=id + " recoge: "+ pedido;
-                msg.setText(mensaje);
+                msg.setText(mensaje);  // Mostramos el mensaje en la interfaz
 
                 //LLevar pedido a la mesa de la cocina
                 //mesa.añadirPedido();
+                //mostrar mensaje de empleado añade pedido a la mesa
             } catch (InterruptedException e) {}            
         }
     }

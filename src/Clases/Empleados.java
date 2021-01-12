@@ -5,19 +5,19 @@ import javax.swing.JTextPane;
 
 public class Empleados extends Thread{      //Empleado es un hilo (Thread)
     // ATRIBUTOS DE LA CLASE EMPLEADO
-    public String id, mensaje;              //Identificador del empleado y mensaje a mostrar en la interfaz
+    private String id, mensaje;              //Identificador del empleado y mensaje a mostrar en la interfaz
     JTextPane msg;      // Para mostrar el mensaje en la interfaz
     Paso paso;
     Mostrador most;                 //Mostrador donde se encuentran los pedidos de los clientes
-    //Mesa mesa;                    //Mesa de la cocina donde se pondrán los pedidos para los cocineros
+    Mesa mest;                    //Mesa de la cocina donde se pondrán los pedidos para los cocineros
     
     // CONSTRUCTOR EMPLEADO
-    public Empleados(String id, Mostrador most, Paso paso, JTextPane t) { //Añadir atributo mesa
+    public Empleados(String id, Mostrador most, Mesa mest, Paso paso, JTextPane t) { //Añadir atributo mesa
         this.id = id;
         this.paso=paso;
         this.msg=t;
         this.most = most;
-        //this.mesa=mesa
+        this.mest=mest;
     }
     
     public void run(){
@@ -30,11 +30,17 @@ public class Empleados extends Thread{      //Empleado es un hilo (Thread)
                 mensaje=id + " recoge: "+ pedido;
                 msg.setText(mensaje);  // Mostramos el mensaje en la interfaz
 
-                //LLevar pedido a la mesa de la cocina
-                //mesa.añadirPedido();
+                                     //LLevar pedido a la mesa de la cocina
+                mest.añadirPedido(pedido);//mesa.añadirPedido();
+                mensaje=id + " lleva el pedido a la mesa: "+ pedido;                
                 //mostrar mensaje de empleado añade pedido a la mesa
+                msg.setText(mensaje);  // Mostramos el mensaje en la interfaz
             } catch (InterruptedException e) {}            
         }
     }
-    
+
+    /**
+     *
+     * @return
+     */
 }

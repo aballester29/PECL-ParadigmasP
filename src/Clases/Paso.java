@@ -87,7 +87,6 @@ public class Paso {
     public void abrirE(String id)
     {
         if (id == "Empleado1"){
-            System.out.println("adios "+id);
             try
             {
                 cerrojo.lock();
@@ -100,7 +99,6 @@ public class Paso {
             }
         }
         else if (id == "Empleado2"){
-            System.out.println("adios "+id);
             try
             {
                 cerrojo.lock();

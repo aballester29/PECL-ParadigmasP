@@ -20,7 +20,7 @@ public class Servidor {
         try
         {
             Funcion obj = new Funcion(); //Crea una instancia del objeto que implementa la interfaz, como objeto a registrar 
-            //Registry registry = LocateRegistry.createRegistry(1099); //Arranca rmiregistry local en el puerto 1099
+            Registry registry = LocateRegistry.createRegistry(1099); //Arranca rmiregistry local en el puerto 1099
             Naming.rebind("//localhost/ObjetoRemoto",obj);   //rebind sólo funciona sobre una url del equipo local 
             System.out.println("El Objeto Remoto ha quedado registrado");
         }

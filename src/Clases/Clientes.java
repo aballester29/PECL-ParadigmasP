@@ -13,6 +13,13 @@ public class Clientes extends Thread{ //Cada cliente es un hilo (thread)
         this.paso=paso;
         this.most = most;
     }
+
+    public Clientes(String id, Mostrador most) {
+        this.id = id;
+        this.most = most;
+    }
+    
+    
     
     public void run(){
         for(int i=1; i<=2; i++){ //Bucle para crear 2 pedidos            

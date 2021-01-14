@@ -6,6 +6,7 @@
 package Clases;
 
 import Interfaz.Simulacion;
+import RMI.InterfazR;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Funciones {
     public static Empleados E1, E2;
     public static Cocineros C1, C2, C3;
     private Simulacion s;
+    private InterfazR r;
     
     
     // FUNCIÓN CONSTRUCTOR: CREA LOS HILOS Y LOS INICIA
@@ -48,6 +50,33 @@ public class Funciones {
         C2.start();
         C3.start();
 
+    }
+    
+    public Funciones(InterfazR r){
+        this.s=s;
+        this.m = new Mostrador(10, r.textMost);
+        this.mesa = new Mesa(20, r.textMesa);
+        
+        this.E1 = new Empleados("Empleado1", m, mesa);
+        this.E2 = new Empleados("Empleado2", m, mesa);        
+        
+        //cocineros--
+        this.C1 = new Cocineros("Cocinero1", mesa);
+        this.C2 = new Cocineros("Cocinero2", mesa);
+        this.C3 = new Cocineros("Cocinero3", mesa);
+        
+        for(int i=1; i<=200;i++){
+            Clientes Ci= new Clientes("C"+i,  m);
+            Ci.start();
+        }
+        
+        E1.start();
+        E2.start();
+        
+        //cocineros--
+        C1.start();
+        C2.start();
+        C3.start();
     }
       
     

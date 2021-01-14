@@ -38,6 +38,7 @@ public class Mostrador {
             cont ++;                // Sumamos 1 al contador
             
             text.setText(null);         // Borramos el contenido del texto de la interfaz
+            
             for(String a : most){       // Recorremos el array y mostramos todos los pedidos en la interfaz
                 text.append(a + "\n");
             }

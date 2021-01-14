@@ -25,9 +25,12 @@ public class Clientes extends Thread{ //Cada cliente es un hilo (thread)
                 String pedido=(id+"-P"+i);                
                 //LLevar pedido a la mesa de la cocina
                 most.añadirPedido(pedido);
-                //System.out.println(id+" deja: "+ pedido);
+                String mensaje=id + " lleva: "+ pedido;
+                evolucionRestaurante.escribirLog("◉ "+ mensaje);
                 sleep((int)(500+500*Math.random()));
-            } catch (InterruptedException e) {}            
+            } catch (InterruptedException e) {} catch (IOException ex) {            
+                Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+            }            
         }
         
         String mensaje = "El "+ id +" ha acabado su ejecución";

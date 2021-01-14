@@ -19,7 +19,8 @@ public class InterfazR extends javax.swing.JFrame {
      */
     public InterfazR() {
         initComponents();
-        this.getContentPane().setBackground(Color.white);        
+        this.getContentPane().setBackground(Color.white);    
+        this.setTitle("Módulo de visualización");
         this.setVisible(true);
         
         // Iniciamos la clase funciones que hace que la simulación comience

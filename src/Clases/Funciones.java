@@ -19,11 +19,13 @@ public class Funciones {
     public static Mesa mesa;
     public static Empleados E1, E2;
     public static Cocineros C1, C2, C3;
+    
     private Log evolucionRestaurante = new Log();
+    private Paso paso = new Paso(evolucionRestaurante);
     
     
     // FUNCIÓN CONSTRUCTOR: CREA LOS HILOS Y LOS INICIA
-    public Funciones(Paso paso, Simulacion s){
+    public Funciones(Simulacion s){
         this.most = new Mostrador(10, s.textMost);
         this.mesa = new Mesa(20, s.textMesa);
         
@@ -72,5 +74,11 @@ public class Funciones {
         C2.start();
         C3.start();
     }
+
+    public Paso getPaso() {
+        return paso;
+    }
+    
+    
     
 }

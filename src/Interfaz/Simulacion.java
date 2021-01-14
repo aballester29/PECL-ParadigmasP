@@ -10,9 +10,12 @@ import Clases.Mostrador;
 import Clases.Paso;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.io.IOException;
 
 import java.util.List;
 import java.util.ListIterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,21 +25,22 @@ import javax.swing.JOptionPane;
 public final class Simulacion extends javax.swing.JFrame {
   
     // ATRIBUTOS USADOS EN LA SIMULACIÓN
-    private Paso paso = new Paso();
     private boolean botonPulsado = false;
     private boolean botonE1 = false;
     private boolean botonE2 = false;
+    private Funciones f;
     
     /**
      * Creates new form Simulación
      */
     public Simulacion() {
         initComponents();
-        this.getContentPane().setBackground(Color.white);        
+        this.getContentPane().setBackground(Color.white);   
+        this.setTitle("Simulación Paco Meralgo");
         this.setVisible(true);
         
         // Iniciamos la clase funciones que hace que la simulación comience
-        Funciones f = new Funciones(paso, this);
+        f = new Funciones(this);
     }
 
     /**
@@ -211,13 +215,21 @@ public final class Simulacion extends javax.swing.JFrame {
         {                
             botonPulsado=true;             //lo cambiamos a pulsado
             jButton1.setText("Reanudar simulación");  //y cambiamos el texto
-            paso.cerrar();    //Cerramos el paso para que la simulación se detenga
+            try {
+                f.getPaso().cerrar();    //Cerramos el paso para que la simulación se detenga
+            } catch (IOException ex) {
+                Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else //Si ya se había pulsado
         {                          
             botonPulsado=false;            //lo cambiamos
             jButton1.setText("Pausar simulación");  //y cambiamos el texto
-            paso.abrir();    //Abrimos el paso para que la simulación siga ejecutandose
+            try {
+                f.getPaso().abrir();    //Abrimos el paso para que la simulación siga ejecutandose
+            } catch (IOException ex) {
+                Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -227,13 +239,21 @@ public final class Simulacion extends javax.swing.JFrame {
         {                
             botonE1=true;             //lo cambiamos a pulsado
             jButton2.setText("Reanudar Empleado 1");  //y cambiamos el texto
-            paso.cerrarE("Empleado1");    //Cerramos el paso para que el empleado 1 se detenga
+            try {
+                f.getPaso().cerrarE("Empleado1");    //Cerramos el paso para que el empleado 1 se detenga
+            } catch (IOException ex) {
+                Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else //Si ya se había pulsado
         {                          
             botonE1=false;            //lo cambiamos
             jButton2.setText("Pausar Empleado 1");  //y cambiamos el texto
-            paso.abrirE("Empleado1");    //Abrimos el paso para que el empleado 1 siga trabajando
+            try {
+                f.getPaso().abrirE("Empleado1");    //Abrimos el paso para que el empleado 1 siga trabajando
+            } catch (IOException ex) {
+                Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -243,13 +263,21 @@ public final class Simulacion extends javax.swing.JFrame {
         {                
             botonE2=true;             //lo cambiamos a pulsado
             jButton3.setText("Reanudar Empleado 2");  //y cambiamos el texto
-            paso.cerrarE("Empleado2");    //Cerramos el paso para que el empleado 2 se detenga
+            try {
+                f.getPaso().cerrarE("Empleado2");    //Cerramos el paso para que el empleado 2 se detenga
+            } catch (IOException ex) {
+                Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else //Si ya se había pulsado
         {                          
             botonE2=false;            //lo cambiamos
             jButton3.setText("Pausar Empleado 2");  //y cambiamos el texto
-            paso.abrirE("Empleado2");    //Abrimos el paso para que el empleado 2 siga trabajando
+            try {
+                f.getPaso().abrirE("Empleado2");    //Abrimos el paso para que el empleado 2 siga trabajando
+            } catch (IOException ex) {
+                Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

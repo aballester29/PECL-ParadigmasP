@@ -23,6 +23,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
         this.getContentPane().setBackground(Color.white);
+        this.setTitle("Simulación Paco Meralgo");
     }
 
     /**

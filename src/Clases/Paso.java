@@ -5,6 +5,7 @@
  */
 package Clases;
 
+import java.io.IOException;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -22,7 +23,13 @@ public class Paso {
     private boolean cerrado=false;
     private boolean cerradoE1=false;
     private boolean cerradoE2=false;
+    Log evolucionRestaurante;
 
+    public Paso(Log log) {
+        this.evolucionRestaurante = log;
+    }
+
+    
     // FUNCIONES
     // FUNCIÓN MIRAR: SIRVE PARA QUE LOS OTROS OBJETOS MIREN COMO ESTÁ EL CERROJO Y SI PUEDEN O NO SEGUIR UTILIZANDOSE
     public void mirar(String id)
@@ -55,12 +62,14 @@ public class Paso {
     }
 
     // FUNCIÓN PARA ABRIR EL CERROJO PARA CONTINUAR CON TODA LA SIMULACIÓN
-    public void abrir()
+    public void abrir() throws IOException
     {
         try
         {
             cerrojo.lock();
             cerrado=false; //Se cambia la condición por la que otros hilos podrían estar esperando
+            String mensaje="Simulacion reanudada";
+            evolucionRestaurante.escribirLog("+ "+ mensaje);
             parar.signalAll();
         }
         finally
@@ -70,12 +79,14 @@ public class Paso {
     }
 
     // FUNCIÓN PARA CERRAR EL CERROJO PARA PARAR TODA LA SIMULACIÓN
-    public void cerrar()
+    public void cerrar() throws IOException
     {
         try
         {
             cerrojo.lock();
             cerrado=true;
+            String mensaje="Simulacion parada";
+            evolucionRestaurante.escribirLog("- "+ mensaje);
         }
         finally
         {
@@ -84,7 +95,7 @@ public class Paso {
     }
     
     // FUNCIÓN PARA ABRIR EL CERROJO PARA QUE SE REANUDE LA EJECUCIÓN DE UN EMPLEADO PARADO
-    public void abrirE(String id)
+    public void abrirE(String id) throws IOException
     {
         if (id == "Empleado1"){
             try
@@ -110,11 +121,13 @@ public class Paso {
                 cerrojo.unlock();
             }
         }
+        String mensaje="Simulacion reanudada para el "+id;
+        evolucionRestaurante.escribirLog("+ "+ mensaje);
                
     }
 
     // FUNCIÓN PARA CERRAR EL CERROJO Y PARAR LA EJECUCIÓN DE UN EMPLEADO
-    public void cerrarE(String id)
+    public void cerrarE(String id) throws IOException
     {
         if (id == "Empleado1"){
                 try
@@ -138,6 +151,8 @@ public class Paso {
                     cerrojo.unlock();
                 }
         }
+        String mensaje="Simulacion pausada para el "+id;
+        evolucionRestaurante.escribirLog("- "+ mensaje);
 
     }
 }

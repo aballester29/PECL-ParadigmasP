@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import java.util.ArrayList;
@@ -12,10 +7,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import javax.swing.JTextArea;
 
-/**
- *
- * @author Azahara
- */
+
 public class Mesa {
     // ATRIBUTOS DE LA CLASE Mesa
     public final List<String> mes;
@@ -26,6 +18,7 @@ public class Mesa {
     JTextArea text; // Para mostrar el contenido en la interfaz
     
     // CONSTRUCTOR DE LA MESA    
+    // Le pasamos por parámetros el maximo de tamaño de la mesa, y el cuadro de la interfaz donde mostrará todo su contenido.
     public Mesa(int maxi, JTextArea t){
         this.max=maxi;
         this.text=t;

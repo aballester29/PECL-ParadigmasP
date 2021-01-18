@@ -19,7 +19,8 @@ public class Mostrador {
     private final Condition vacia = control.newCondition();
     JTextArea text; // Para mostrar el contenido en la interfaz
     
-    // CONSTRUCTOR DEL MOSTRADOR    
+    // CONSTRUCTOR DEL MOSTRADOR 
+    // Le pasamos por parámetros el maximo de tamaño del mostrador, y el cuadro de la interfaz donde mostrará todo su contenido.
     public Mostrador(int maxi, JTextArea t){
         this.max=maxi;
         this.text=t;

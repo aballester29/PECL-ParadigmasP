@@ -1,22 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RMI;
-import Clases.*;
 import java.rmi.*;
 
-/**
- *
- * @author Azahara
- */
 public class Cliente {
+    // Programa de conexión distribuida, servicio de cliente. Localiza el servidor y se conecta a el.
     public static void main(String args[])
     {
         try {
              InterfazRemota obj = (InterfazRemota) Naming.lookup("//127.0.0.1/ObjetoRemoto"); //Localiza el objeto distribuido
-             obj.iniciar();
+             System.out.println("Conexión iniciada...");
+             obj.iniciar(); // Inicia la ejecución de la simulación.
         }
         catch (Exception e)
         {

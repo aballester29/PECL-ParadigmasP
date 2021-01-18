@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import Interfaz.Simulacion;
 import RMI.InterfazR;
 
-/**
- *
- * @author Azahara
- */
+
 public class Funciones {
     // CLASE FUNCIONES: CONTIENE LA FUNCIÓN PRINCIPAL PARA COMENZAR TODA LA SIMULACIÓN
     // ATRIBUTOS:
@@ -24,7 +16,10 @@ public class Funciones {
     private Paso paso = new Paso(evolucionRestaurante);
     
     
-    // FUNCIÓN CONSTRUCTOR: CREA LOS HILOS Y LOS INICIA
+    // FUNCIÓN CONSTRUCTOR: CREA LAS VARIABLES COMPARTIDAS Y LOS HILOS Y LOS INICIA
+    // Tenemos dos constructores dependiendo del tipo de conexión, ya que cada una usará una interfaz diferente, la cual es pasada por parámetro.
+    
+    // 1. Constructor conexión local:
     public Funciones(Simulacion s){
         this.most = new Mostrador(10, s.textMost);
         this.mesa = new Mesa(20, s.textMesa);
@@ -32,7 +27,6 @@ public class Funciones {
         this.E1 = new Empleados("Empleado1", most, mesa, evolucionRestaurante, paso,s.textFieldE1);
         this.E2 = new Empleados("Empleado2", most, mesa, evolucionRestaurante, paso,s.textFieldE2);        
         
-        //cocineros--
         this.C1 = new Cocineros("Cocinero1", mesa, evolucionRestaurante, paso,s.textFieldC1);
         this.C2 = new Cocineros("Cocinero2", mesa, evolucionRestaurante, paso,s.textFieldC2);
         this.C3 = new Cocineros("Cocinero3", mesa, evolucionRestaurante, paso,s.textFieldC3);
@@ -45,6 +39,7 @@ public class Funciones {
         hilos();
     }
     
+    // 2. Constructor conexión distribuida RMI:    
     public Funciones(InterfazR r){
         this.most = new Mostrador(10, r.textMost);
         this.mesa = new Mesa(20, r.textMesa);
@@ -52,7 +47,6 @@ public class Funciones {
         this.E1 = new Empleados("Empleado1", most, mesa, evolucionRestaurante);
         this.E2 = new Empleados("Empleado2", most, mesa, evolucionRestaurante);        
         
-        //cocineros--
         this.C1 = new Cocineros("Cocinero1", mesa, evolucionRestaurante);
         this.C2 = new Cocineros("Cocinero2", mesa, evolucionRestaurante);
         this.C3 = new Cocineros("Cocinero3", mesa, evolucionRestaurante);
@@ -64,21 +58,20 @@ public class Funciones {
         
         hilos();
     }
-      
+    
+    
+    // PROGRAMA AUXILIAR: Función para iniciar los hilos. Ayuda a la reutilización de código.
     public void hilos(){      
         E1.start();
         E2.start();
         
-        //cocineros--
         C1.start();
         C2.start();
         C3.start();
     }
 
+    // FUNCIÓN GETPASO: Permite a la interfaz de conexión local obtener la clase creada aqui para controlar la ejecución de la simulación.
     public Paso getPaso() {
         return paso;
-    }
-    
-    
-    
+    } 
 }

@@ -307,3 +307,61 @@ Thu Jan 14 14:55:26 CET 2021 ------- ◎ Cocinero3 cocina: Cliente165-P1
 Thu Jan 14 14:55:27 CET 2021 ------- ◍ Empleado1 recoge: Cliente19-P1
 Thu Jan 14 14:55:27 CET 2021 ------- ◉ Cliente31 lleva: Cliente31-P1
 Thu Jan 14 14:55:27 CET 2021 ------- ◍ Empleado1 llevar: Cliente19-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente7 lleva: Cliente7-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente16 lleva: Cliente16-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente166 lleva: Cliente166-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente5 lleva: Cliente5-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente132 lleva: Cliente132-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente99 lleva: Cliente99-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente2 lleva: Cliente2-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente1 lleva: Cliente1-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente6 lleva: Cliente6-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente4 lleva: Cliente4-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◍ Empleado1 recoge: Cliente1-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente8 lleva: Cliente8-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◍ Empleado1 lleva el pedido a la mesa: Cliente1-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◍ Empleado2 recoge: Cliente99-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◉ Cliente17 lleva: Cliente17-P1
+Thu Jan 14 14:56:53 CET 2021 ------- ◍ Empleado2 lleva el pedido a la mesa: Cliente99-P1
+Thu Jan 14 14:56:54 CET 2021 ------- ◍ Empleado1 recoge: Cliente2-P1
+Thu Jan 14 14:56:54 CET 2021 ------- ◉ Cliente11 lleva: Cliente11-P1
+Thu Jan 14 14:56:54 CET 2021 ------- ◍ Empleado1 lleva el pedido a la mesa: Cliente2-P1
+Thu Jan 14 14:56:54 CET 2021 ------- ◍ Empleado2 recoge: Cliente132-P1
+Thu Jan 14 14:56:54 CET 2021 ------- ◉ Cliente12 lleva: Cliente12-P1
+Thu Jan 14 14:56:54 CET 2021 ------- ◍ Empleado2 lleva el pedido a la mesa: Cliente132-P1
+Thu Jan 14 14:56:54 CET 2021 ------- ◍ Empleado1 recoge: Cliente4-P1
+Thu Jan 14 14:56:54 CET 2021 ------- ◉ Cliente20 lleva: Cliente20-P1
+Thu Jan 14 14:56:54 CET 2021 ------- ◍ Empleado1 lleva el pedido a la mesa: Cliente4-P1
+Thu Jan 14 14:56:54 CET 2021 ------- ◎ Cocinero1 cocina: Cliente1-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◍ Empleado1 recoge: Cliente166-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◉ Cliente10 lleva: Cliente10-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◍ Empleado1 lleva el pedido a la mesa: Cliente166-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◍ Empleado2 recoge: Cliente6-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◉ Cliente14 lleva: Cliente14-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◍ Empleado2 lleva el pedido a la mesa: Cliente6-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◎ Cocinero3 cocina: Cliente99-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◍ Empleado1 recoge: Cliente7-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◉ Cliente9 lleva: Cliente9-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◍ Empleado1 lleva el pedido a la mesa: Cliente7-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◍ Empleado1 recoge: Cliente16-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◉ Cliente15 lleva: Cliente15-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◍ Empleado1 lleva el pedido a la mesa: Cliente16-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◉ Cliente3 lleva: Cliente3-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◍ Empleado2 recoge: Cliente5-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◍ Empleado2 lleva el pedido a la mesa: Cliente5-P1
+Thu Jan 14 14:56:55 CET 2021 ------- ◎ Cocinero2 cocina: Cliente2-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◍ Empleado1 recoge: Cliente8-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◉ Cliente18 lleva: Cliente18-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◍ Empleado1 lleva el pedido a la mesa: Cliente8-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◉ Cliente19 lleva: Cliente19-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◍ Empleado2 recoge: Cliente17-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◍ Empleado2 lleva el pedido a la mesa: Cliente17-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◉ Cliente13 lleva: Cliente13-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◍ Empleado1 recoge: Cliente11-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◍ Empleado1 lleva el pedido a la mesa: Cliente11-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◍ Empleado2 recoge: Cliente12-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◉ Cliente21 lleva: Cliente21-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◍ Empleado2 lleva el pedido a la mesa: Cliente12-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◍ Empleado1 recoge: Cliente20-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◉ Cliente22 lleva: Cliente22-P1
+Thu Jan 14 14:56:56 CET 2021 ------- ◍ Empleado1 lleva el pedido a la mesa: Cliente20-P1

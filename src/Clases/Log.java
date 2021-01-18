@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import java.io.BufferedWriter;
@@ -11,10 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 
-/**
- *
- * @author Azahara
- */
 public class Log {
     //Crea el archivo en disco.
     String ruta = "./evolucionRestaurante.txt";
@@ -25,6 +16,7 @@ public class Log {
     public Log(){
     }
 
+    // Función para crear el log
     public void crearArchivo() throws IOException {
     if(archivo.exists()) {
         bw = new BufferedWriter(new FileWriter(archivo));
@@ -36,7 +28,7 @@ public class Log {
     bw.close();
     }
 	
-    //Añadir más eventos al archivo.
+    //Función para añadir eventos al archivo.
     public void escribirLog(String evento) throws IOException {
             java.util.Date fecha = new Date();
             FileWriter flwriter = null;
@@ -46,7 +38,6 @@ public class Log {
                     BufferedWriter bfwriter = new BufferedWriter(flwriter);
                 bfwriter.write(fecha+ " ------- "+evento+"\n");
                     bfwriter.close();
-                    System.out.println("Archivo modificado satisfactoriamente..."+"\n");
 
             } catch (IOException e) {
                     e.printStackTrace();

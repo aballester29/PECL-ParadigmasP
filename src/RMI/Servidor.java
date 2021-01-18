@@ -1,20 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RMI;
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-/**
- *
- * @author Azahara
- */
 public class Servidor {
-    
-    
+    // Programa de conexión distribuida, servicio de servidor. Crea el servidor y espera a que un cliente se conecte a el.    
     public static void main(String args[])
     {
         try

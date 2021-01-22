@@ -1,18 +1,18 @@
 
 package RMI;
 
-import Interfaz.Simulacion;
-import Clases.Funciones;
+import Clases.Simulacion;
+import Clases.Inicio;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 
-public class Funcion  extends UnicastRemoteObject implements InterfazRemota
+public class Ejecucion  extends UnicastRemoteObject implements InterfazRemota
 {
-    public Funciones f;
-    public InterfazR in;
+    public Inicio f;
+    public InterfazCliente in;
     Conexion con = new Conexion (this) ;
-    public Funcion() throws RemoteException {}                 //Constructor
+    public Ejecucion() throws RemoteException {}                 //Constructor
     
 
     public void iniciar() throws RemoteException  // Implementación del método remoto
@@ -24,7 +24,7 @@ public class Funcion  extends UnicastRemoteObject implements InterfazRemota
     
     public void iniCliente() throws RemoteException
     {
-        this.in = new InterfazR();
+        this.in = new InterfazCliente();
         con.conx =true;
         in.setVisible(true);
     }

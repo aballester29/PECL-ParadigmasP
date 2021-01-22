@@ -1,48 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Interfaz;
-
-import Clases.Funciones;
-import Clases.Mostrador;
-import Clases.Paso;
+package Clases;
 import RMI.Conexion;
-import RMI.Funcion;
-import RMI.InterfazR;
 import java.awt.Color;
-import java.awt.HeadlessException;
 import java.io.IOException;
-
-import java.util.List;
-import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 
-/**
- *
- * @author Azahara
- */
 public final class Simulacion extends javax.swing.JFrame {
   
     // ATRIBUTOS USADOS EN LA SIMULACIÓN
     private boolean botonPulsado = false;
     private boolean botonE1 = false;
     private boolean botonE2 = false;
-    public Funciones f;
+    public Inicio f;
     
     /**
      * Creates new form Simulación
+     * @param con
      */
     public Simulacion(Conexion con) {
         initComponents();
         this.getContentPane().setBackground(Color.white);   
         this.setTitle("Simulación Paco Meralgo");
         this.setVisible(true);
-        this.f = new Funciones(this, con);
+        this.f = new Inicio(this, con);
     }
 
     /**

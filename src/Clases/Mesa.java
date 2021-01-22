@@ -1,5 +1,4 @@
 package Clases;
-
 import RMI.Conexion;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +20,7 @@ public class Mesa {
     
     // CONSTRUCTOR DE LA MESA    
     // Le pasamos por parámetros el maximo de tamaño de la mesa, y el cuadro de la interfaz donde mostrará todo su contenido.
+    // También pasamos objeto de conexion para saber si tenemos una interfaz de cliente o no.
     public Mesa(int maxi, JTextArea t, Conexion con){
         this.max=maxi;
         this.textS=t;
@@ -39,7 +39,11 @@ public class Mesa {
             mes.add(pedido);       // Añadimos el pedido
             cont ++;                // Sumamos 1 al contador
             
-            escribir(textS);
+            textS.setText(null);         // Borramos el contenido del texto de la interfaz
+            
+            for(String a : mes){       // Recorremos el array y mostramos todos los pedidos en la interfaz
+                textS.append(a + "\n");
+            }
             con.mirar("mesa");
             vacia.signal();         
         } finally{
@@ -58,7 +62,11 @@ public class Mesa {
             mes.remove(0);                 // Eliminamos el pedido de la lista
             cont --;                        // Disminuimos el contador
             
-            escribir(textS);
+            textS.setText(null);         // Borramos el contenido del texto de la interfaz
+            
+            for(String a : mes){       // Recorremos el array y mostramos todos los pedidos en la interfaz
+                textS.append(a + "\n");
+            }
             con.mirar("mesa");
             llena.signal();
             return pedido;
@@ -66,14 +74,5 @@ public class Mesa {
             control.unlock();       // Quitamos el cerrojo
         }
     }
-    
-    public void escribir(JTextArea text){
-       
-        text.setText(null);         // Borramos el contenido del texto de la interfaz
-            
-            for(String a : mes){       // Recorremos el array y mostramos todos los pedidos en la interfaz
-                text.append(a + "\n");
-            }
 
-    }
 }

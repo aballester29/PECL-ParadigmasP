@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RMI;
-
-import Clases.Funciones;
 import java.awt.Color;
 import javax.swing.JTextArea;
 
-/**
- *
- * @author Azahara
- */
-public class InterfazR extends javax.swing.JFrame {
+public class InterfazCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form InterfazR
      */
-    public InterfazR() {
+    public InterfazCliente() {
         initComponents();
         this.getContentPane().setBackground(Color.white);    
         this.setTitle("Módulo de visualización");

@@ -1,5 +1,4 @@
 package Clases;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -12,7 +11,7 @@ public class Log {
     File archivo = new File(ruta);
     BufferedWriter bw;
 
-    // CONSTRUCTOR DEL MOSTRADOR    
+    // CONSTRUCTOR    
     public Log(){
     }
 

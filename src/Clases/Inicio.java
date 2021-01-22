@@ -1,11 +1,7 @@
 package Clases;
-
-import Interfaz.Simulacion;
 import RMI.Conexion;
-import RMI.InterfazR;
 
-
-public class Funciones {
+public class Inicio {
     // CLASE FUNCIONES: CONTIENE LA FUNCIÓN PRINCIPAL PARA COMENZAR TODA LA SIMULACIÓN
     // ATRIBUTOS:
     public static Mostrador most;
@@ -19,10 +15,7 @@ public class Funciones {
     
     
     // FUNCIÓN CONSTRUCTOR: CREA LAS VARIABLES COMPARTIDAS Y LOS HILOS Y LOS INICIA
-    // Tenemos dos constructores dependiendo del tipo de conexión, ya que cada una usará una interfaz diferente, la cual es pasada por parámetro.
-    
-    // 1. Constructor conexión local:
-    public Funciones(Simulacion s, Conexion con){
+    public Inicio(Simulacion s, Conexion con){
         this.most = new Mostrador(10, s.textMost, con);
         this.mesa = new Mesa(20, s.textMesa, con);
        

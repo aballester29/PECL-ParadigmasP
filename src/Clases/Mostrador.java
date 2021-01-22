@@ -1,5 +1,4 @@
 package Clases;
-
 import RMI.Conexion;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +21,7 @@ public class Mostrador {
     
     // CONSTRUCTOR DEL MOSTRADOR 
     // Le pasamos por parámetros el maximo de tamaño del mostrador, y el cuadro de la interfaz donde mostrará todo su contenido.
+    // También pasamos objeto de conexion para saber si tenemos una interfaz de cliente o no.
     public Mostrador(int maxi, JTextArea t, Conexion con){
         this.con = con;
         this.max=maxi;
@@ -40,7 +40,12 @@ public class Mostrador {
             most.add(pedido);       // Añadimos el pedido
             cont ++;                // Sumamos 1 al contador
             
-            escribir(textS);
+            textS.setText(null);         // Borramos el contenido del texto de la interfaz
+            
+            for(String a : most){       // Recorremos el array y mostramos todos los pedidos en la interfaz
+                textS.append(a + "\n");
+            }
+            
             con.mirar("most");
             vacia.signal();         
         } finally{
@@ -59,8 +64,12 @@ public class Mostrador {
             most.remove(0);                 // Eliminamos el pedido de la lista
             cont --;                        // Disminuimos el contador
             
-            escribir(textS);
-
+            textS.setText(null);         // Borramos el contenido del texto de la interfaz
+            
+            for(String a : most){       // Recorremos el array y mostramos todos los pedidos en la interfaz
+                textS.append(a + "\n");
+            }
+            
             con.mirar("most");
             llena.signal();
             return pedido;
@@ -69,14 +78,5 @@ public class Mostrador {
         }          
     }
 
-    public void escribir(JTextArea text){
-       
-        text.setText(null);         // Borramos el contenido del texto de la interfaz
-            
-            for(String a : most){       // Recorremos el array y mostramos todos los pedidos en la interfaz
-                text.append(a + "\n");
-            }
-
-    }
    
 }

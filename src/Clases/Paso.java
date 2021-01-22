@@ -1,19 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
-
 import java.io.IOException;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- *
- * @author Azahara
- */
 public class Paso {
     // CLASE PASO: SE ENCARGA DE CONTROLAR LA EJECUCIÓN DE LA SIMULACIÓN Y DE LOS EMPLEADOS
     

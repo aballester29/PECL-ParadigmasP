@@ -12,6 +12,7 @@ public class Servidor {
             Funcion obj = new Funcion(); //Crea una instancia del objeto que implementa la interfaz, como objeto a registrar 
             Naming.rebind("//127.0.0.1/ObjetoRemoto",obj);   //rebind sólo funciona sobre una url del equipo local 
             System.out.println("El Objeto Remoto ha quedado registrado");
+            obj.iniciar();
         }
         catch (Exception e)
         {

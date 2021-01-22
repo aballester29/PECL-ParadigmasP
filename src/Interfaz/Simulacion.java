@@ -8,6 +8,9 @@ package Interfaz;
 import Clases.Funciones;
 import Clases.Mostrador;
 import Clases.Paso;
+import RMI.Conexion;
+import RMI.Funcion;
+import RMI.InterfazR;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.io.IOException;
@@ -17,6 +20,7 @@ import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -28,19 +32,17 @@ public final class Simulacion extends javax.swing.JFrame {
     private boolean botonPulsado = false;
     private boolean botonE1 = false;
     private boolean botonE2 = false;
-    private Funciones f;
+    public Funciones f;
     
     /**
      * Creates new form Simulación
      */
-    public Simulacion() {
+    public Simulacion(Conexion con) {
         initComponents();
         this.getContentPane().setBackground(Color.white);   
         this.setTitle("Simulación Paco Meralgo");
         this.setVisible(true);
-        
-        // Iniciamos la clase funciones que hace que la simulación comience
-        f = new Funciones(this);
+        this.f = new Funciones(this, con);
     }
 
     /**
@@ -216,7 +218,7 @@ public final class Simulacion extends javax.swing.JFrame {
             botonPulsado=true;             //lo cambiamos a pulsado
             jButton1.setText("Reanudar simulación");  //y cambiamos el texto
             try {
-                f.getPaso().cerrar();    //Cerramos el paso para que la simulación se detenga
+               f.getPaso().cerrar();    //Cerramos el paso para que la simulación se detenga
             } catch (IOException ex) {
                 Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -281,6 +283,7 @@ public final class Simulacion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

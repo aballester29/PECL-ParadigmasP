@@ -1,6 +1,7 @@
 package Clases;
 
 import Interfaz.Simulacion;
+import RMI.Conexion;
 import RMI.InterfazR;
 
 
@@ -16,14 +17,15 @@ public class Funciones {
     private Paso paso = new Paso(evolucionRestaurante);
     
     
+    
     // FUNCIÓN CONSTRUCTOR: CREA LAS VARIABLES COMPARTIDAS Y LOS HILOS Y LOS INICIA
     // Tenemos dos constructores dependiendo del tipo de conexión, ya que cada una usará una interfaz diferente, la cual es pasada por parámetro.
     
     // 1. Constructor conexión local:
-    public Funciones(Simulacion s){
-        this.most = new Mostrador(10, s.textMost);
-        this.mesa = new Mesa(20, s.textMesa);
-        
+    public Funciones(Simulacion s, Conexion con){
+        this.most = new Mostrador(10, s.textMost, con);
+        this.mesa = new Mesa(20, s.textMesa, con);
+       
         this.E1 = new Empleados("Empleado1", most, mesa, evolucionRestaurante, paso,s.textFieldE1);
         this.E2 = new Empleados("Empleado2", most, mesa, evolucionRestaurante, paso,s.textFieldE2);        
         
@@ -36,32 +38,6 @@ public class Funciones {
             Ci.start();
         }
         
-        hilos();
-    }
-    
-    // 2. Constructor conexión distribuida RMI:    
-    public Funciones(InterfazR r){
-        this.most = new Mostrador(10, r.textMost);
-        this.mesa = new Mesa(20, r.textMesa);
-        
-        this.E1 = new Empleados("Empleado1", most, mesa, evolucionRestaurante);
-        this.E2 = new Empleados("Empleado2", most, mesa, evolucionRestaurante);        
-        
-        this.C1 = new Cocineros("Cocinero1", mesa, evolucionRestaurante);
-        this.C2 = new Cocineros("Cocinero2", mesa, evolucionRestaurante);
-        this.C3 = new Cocineros("Cocinero3", mesa, evolucionRestaurante);
-        
-        for(int i=1; i<=200;i++){
-            Clientes Ci= new Clientes("Cliente"+i,  most, evolucionRestaurante);
-            Ci.start();
-        }
-        
-        hilos();
-    }
-    
-    
-    // PROGRAMA AUXILIAR: Función para iniciar los hilos. Ayuda a la reutilización de código.
-    public void hilos(){      
         E1.start();
         E2.start();
         

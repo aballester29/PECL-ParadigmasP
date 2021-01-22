@@ -13,5 +13,5 @@ import java.rmi.RemoteException;
  * @author Azahara
  */
 public interface InterfazRemota extends Remote {
-    void iniciar() throws RemoteException;
+    void iniCliente() throws RemoteException;
 }

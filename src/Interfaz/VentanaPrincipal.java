@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import Clases.Funciones;
+import RMI.InterfazR;
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -17,13 +19,16 @@ import javax.swing.SwingConstants;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
+    private boolean conected;
+    Funciones f;
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal() {
+    public VentanaPrincipal(Boolean con) {
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setTitle("Simulación Paco Meralgo");
+        this.conected = con;
     }
 
     /**
@@ -76,24 +81,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void BotonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonStartActionPerformed
         // TODO add your handling code here:
-        dispose();
-        Simulacion s = new Simulacion();
-        s.setVisible(true);
-    }//GEN-LAST:event_BotonStartActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    
-    public static void main(String args[]) {
+        /*dispose();
+        //Simulacion s = new Simulacion(this);
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new VentanaPrincipal().setVisible(true);
-            }
-        });
-    }
+        if (conected){
+            InterfazR in = new InterfazR();
+            this.f = new Funciones (s, in);
+        }
+        else {
+            this.f = new Funciones (s);
+        }*/
+    }//GEN-LAST:event_BotonStartActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonStart;

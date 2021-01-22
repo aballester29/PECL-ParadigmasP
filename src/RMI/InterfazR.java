@@ -7,6 +7,7 @@ package RMI;
 
 import Clases.Funciones;
 import java.awt.Color;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -22,9 +23,6 @@ public class InterfazR extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.white);    
         this.setTitle("Módulo de visualización");
         this.setVisible(true);
-        
-        // Iniciamos la clase funciones que hace que la simulación comience
-        Funciones f = new Funciones(this);
     }
 
     /**
@@ -98,6 +96,18 @@ public class InterfazR extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+
+    public void setTextMesa(JTextArea textMesa) {
+        this.textMesa = textMesa;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public void setTextMost(JTextArea textMost) {
+        this.textMost = textMost;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

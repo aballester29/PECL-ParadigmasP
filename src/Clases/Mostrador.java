@@ -1,11 +1,11 @@
 package Clases;
 
+import RMI.Conexion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import javax.swing.JList;
 import javax.swing.JTextArea;
 
 
@@ -17,13 +17,15 @@ public class Mostrador {
     private final Lock control = new ReentrantLock();
     private final Condition llena = control.newCondition();
     private final Condition vacia = control.newCondition();
-    JTextArea text; // Para mostrar el contenido en la interfaz
+    JTextArea textS; // Para mostrar el contenido en la interfaz
+    private Conexion con;
     
     // CONSTRUCTOR DEL MOSTRADOR 
     // Le pasamos por parámetros el maximo de tamaño del mostrador, y el cuadro de la interfaz donde mostrará todo su contenido.
-    public Mostrador(int maxi, JTextArea t){
+    public Mostrador(int maxi, JTextArea t, Conexion con){
+        this.con = con;
         this.max=maxi;
-        this.text=t;
+        this.textS=t;
         most = new ArrayList<>(max);
         
     }
@@ -38,12 +40,8 @@ public class Mostrador {
             most.add(pedido);       // Añadimos el pedido
             cont ++;                // Sumamos 1 al contador
             
-            text.setText(null);         // Borramos el contenido del texto de la interfaz
-            
-            for(String a : most){       // Recorremos el array y mostramos todos los pedidos en la interfaz
-                text.append(a + "\n");
-            }
-
+            escribir(textS);
+            con.mirar("most");
             vacia.signal();         
         } finally{
             control.unlock();       // Quitamos el cerrojo
@@ -61,11 +59,9 @@ public class Mostrador {
             most.remove(0);                 // Eliminamos el pedido de la lista
             cont --;                        // Disminuimos el contador
             
-            text.setText(null);         // Borramos el contenido del texto de la interfaz
-            for(String a : most){       // Recorremos el array y mostramos todos los pedidos en la interfaz
-                text.append(a + "\n");
-            }
+            escribir(textS);
 
+            con.mirar("most");
             llena.signal();
             return pedido;
         } finally{
@@ -73,5 +69,14 @@ public class Mostrador {
         }          
     }
 
+    public void escribir(JTextArea text){
+       
+        text.setText(null);         // Borramos el contenido del texto de la interfaz
+            
+            for(String a : most){       // Recorremos el array y mostramos todos los pedidos en la interfaz
+                text.append(a + "\n");
+            }
+
+    }
    
 }

@@ -1,5 +1,6 @@
 package Clases;
 
+import RMI.Conexion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Condition;
@@ -15,16 +16,18 @@ public class Mesa {
     private final Lock control = new ReentrantLock();
     private final Condition llena = control.newCondition();
     private final Condition vacia = control.newCondition();
-    JTextArea text; // Para mostrar el contenido en la interfaz
+    private Conexion con;
+    JTextArea textS; // Para mostrar el contenido en la interfaz
     
     // CONSTRUCTOR DE LA MESA    
     // Le pasamos por parámetros el maximo de tamaño de la mesa, y el cuadro de la interfaz donde mostrará todo su contenido.
-    public Mesa(int maxi, JTextArea t){
+    public Mesa(int maxi, JTextArea t, Conexion con){
         this.max=maxi;
-        this.text=t;
-        mes = new ArrayList<>(max);
-        
+        this.textS=t;
+        this.con = con;
+        mes = new ArrayList<>(max);        
     }
+
         
     // FUNCIÓN PARA AÑADIR PEDIDOS A LA LISTA (mes). USADA POR Empleados.
     public void añadirPedido(String pedido) throws InterruptedException{
@@ -36,12 +39,8 @@ public class Mesa {
             mes.add(pedido);       // Añadimos el pedido
             cont ++;                // Sumamos 1 al contador
             
-            text.setText(null);         // Borramos el contenido del texto de la interfaz
-            
-            for(String a : mes){       // Recorremos el array y mostramos todos los pedidos en la interfaz
-                text.append(a + "\n");
-            }
-
+            escribir(textS);
+            con.mirar("mesa");
             vacia.signal();         
         } finally{
             control.unlock();       // Quitamos el cerrojo
@@ -59,12 +58,8 @@ public class Mesa {
             mes.remove(0);                 // Eliminamos el pedido de la lista
             cont --;                        // Disminuimos el contador
             
-            text.setText(null);         // Borramos el contenido del texto de la interfaz
-            
-            for(String a : mes){       // Recorremos el array y mostramos todos los pedidos en la interfaz
-                text.append(a + "\n");
-            }
-
+            escribir(textS);
+            con.mirar("mesa");
             llena.signal();
             return pedido;
         } finally{
@@ -72,4 +67,13 @@ public class Mesa {
         }
     }
     
+    public void escribir(JTextArea text){
+       
+        text.setText(null);         // Borramos el contenido del texto de la interfaz
+            
+            for(String a : mes){       // Recorremos el array y mostramos todos los pedidos en la interfaz
+                text.append(a + "\n");
+            }
+
+    }
 }

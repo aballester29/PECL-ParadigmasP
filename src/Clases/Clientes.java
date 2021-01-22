@@ -38,13 +38,6 @@ public class Clientes extends Thread{ //Cada cliente es un hilo (thread)
                 Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
             }            
         }
-        
-        String mensaje = "El "+ id +" ha acabado su ejecución";
-        System.out.println(mensaje);        
-        try {
-            evolucionRestaurante.escribirLog("◉ "+ mensaje);
-        } catch (IOException ex) {
-            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }    
 }
